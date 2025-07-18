@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: numerology_phonenumber_checker  # change this if your service name is different on Render
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn checker.wsgi:application"
+    autoDeploy: true
+
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql://numerology_phonennumber_checker_user:CX4hHQhpqGQXWA0qVRtupXZs83P7A5Qw@dpg-d1t1nfer433s73eskiu0-a/numerology_phonennumber_checker
+
+    migrateCommand: "python manage.py migrate"
