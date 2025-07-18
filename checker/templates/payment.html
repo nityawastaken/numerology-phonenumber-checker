@@ -15,17 +15,17 @@
 
       <div style="text-align: center; margin-top: 20px;">
         <h3>UPI QR Code</h3>
-        <img src="{% static 'checker/QR/nitya selfie.jpg' %}" alt="QR Code" style="max-width: 300px;"/>
-        <p><strong>UPI ID:</strong> example@upi</p>
+        <img src="{% static 'checker/QR/QR code Heittal.jpg' %}" alt="QR Code" style="max-width: 300px;"/>
+        <p><strong>UPI ID:</strong> 9757402948@ptsbi</p>
       </div>
 
       <form method="post" enctype="multipart/form-data" style="margin-top: 20px;">
         {% csrf_token %}
         <p><strong>Pricing</strong></p>
         <ul>
-          <li>1 day access – ₹10</li>
-          <li>7 day access – ₹50</li>
-          <li>30 day access – ₹150</li>
+          <li>1 day access – ₹150</li>
+          <li>7 day access – ₹600</li>
+          <li>30 day access – ₹1500</li>
         </ul>
 
         <label for="id_payment_screenshot">Upload Screenshot:</label>
