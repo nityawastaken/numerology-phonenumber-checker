@@ -14,6 +14,8 @@ import os
 from pathlib import Path
 
 import dj_database_url
+from dotenv import load_dotenv
+from urllib.parse import urlparse, parse_qsl
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -98,11 +100,29 @@ WSGI_APPLICATION = 'phonechecker.wsgi.application'
 # DATABASES = {
 #     'default': dj_database_url.parse("postgresql://numerology_phonennumber_checker_user:CX4hHQhpqGQXWA0qVRtupXZs83P7A5Qw@dpg-d1t1nfer433s73eskiu0-a/numerology_phonennumber_checker")
 # }
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
+
+# load_dotenv()
+# DATABASES = {
+#     'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+# }
+# Add these at the top of your settings.py
 
 load_dotenv()
+
+# Replace the DATABASES section of your settings.py with this
+tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
+
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': tmpPostgres.path.replace('/', ''),
+        'USER': tmpPostgres.username,
+        'PASSWORD': tmpPostgres.password,
+        'HOST': tmpPostgres.hostname,
+        'PORT': 5432,
+        'OPTIONS': dict(parse_qsl(tmpPostgres.query)),
+    }
 }
 
 # Password validation
