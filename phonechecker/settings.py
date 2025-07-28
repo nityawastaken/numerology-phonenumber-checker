@@ -95,8 +95,14 @@ WSGI_APPLICATION = 'phonechecker.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+# DATABASES = {
+#     'default': dj_database_url.parse("postgresql://numerology_phonennumber_checker_user:CX4hHQhpqGQXWA0qVRtupXZs83P7A5Qw@dpg-d1t1nfer433s73eskiu0-a/numerology_phonennumber_checker")
+# }
+from dotenv import load_dotenv
+
+load_dotenv()
 DATABASES = {
-    'default': dj_database_url.parse("postgresql://numerology_phonennumber_checker_user:CX4hHQhpqGQXWA0qVRtupXZs83P7A5Qw@dpg-d1t1nfer433s73eskiu0-a/numerology_phonennumber_checker")
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
 
 # Password validation
