@@ -39,7 +39,7 @@
 </head>
 <body>
     <div class="navbar">
-        <a href="{% url 'index' %}">Home</a>
+        <a href="{% url 'home' %}">Home</a>
         {% if user.is_authenticated %}
             <a href="{% url 'payment' %}">Payment</a>
             <a href="{% url 'logout' %}" class="navbar-right">Logout</a>

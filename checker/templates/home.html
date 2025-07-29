@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Is Your Mobile Number Lucky?</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #0e0e1a;
+      color: #fff;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(226, 81, 246, 0.6), rgba(242, 178, 243, 0.6)), url('/static/images/numerology-bg.jpg') no-repeat center center;
+      background-size: cover;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      color: #5defd4;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      color: #ccc;
+    }
+
+    .hero a.button {
+      background-color: #35ecc5;
+      color: #000;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+
+    .section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .section h2 {
+      color: #3ee0b5;
+      margin-bottom: 20px;
+    }
+
+    .steps, .testimonials {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .steps div, .testimonial {
+      background-color: #1e1e2f;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    footer {
+      background-color: #1a1a1a;
+      padding: 30px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #aaa;
+    }
+
+    footer a {
+      color: #4df8cd;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>Hello, {{user.username}}</h1>
+    <img src="{% static 'checker/BG/background.jpg' %}" alt="bg pic" style="max-width: 300px;"/>
+
+  <h1>Is Your Mobile Number Lucky?</h1>
+  <p>Discover the hidden numerological power of your digits.</p>
+  <a href="{% url 'index' %}" class="button">Check My Number</a>
+</div>
+
+
+<div class="section">
+  <h2>How It Works</h2>
+  <div class="steps">
+    <div>📱 Enter your mobile number</div>
+    <div>⚡ Get instant numerology analysis</div>
+    <div>🌟 Learn what your number says about your personality, luck, and success</div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Why Numerology? what are the benefits?</h2>
+  <div class="steps">
+    <div>Lucky mobile numbers align with your birth date.</div>
+<div>They attract luck, improve communication, and elevate lifestyle.</div>
+<div>Number vibes boost daily life and success.</div>
+  </div>
+</div>
+
+
+<!-- <div class="section">
+  <h2>What Our Users Say</h2>
+  <div class="testimonials">
+    <div class="testimonial">“I never believed in numerology, but the result was spot on! Changed my SIM!” — Riya M.</div>
+    <div class="testimonial">“My number aligned with my destiny number. This is so cool!” — Abhinav T.</div>
+    <div class="testimonial">“It’s fun, mystical, and surprisingly accurate. 10/10.” — Sneha R.</div>
+  </div>
+</div> -->
+
+<footer>
+  <p>
+    For support pls contact Heittal Ruparel on +91 7039733313
+  </p>
+</footer>
+
+</body>
+</html>
+{% endblock %}

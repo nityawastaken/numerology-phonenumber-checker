@@ -351,9 +351,10 @@ def logout_view(request):
 
 @login_required
 def home_view(request):
-    if not request.user.has_access:
-        return redirect('payment')
-    return redirect('index')
+    # if not request.user.has_access:
+    #     return redirect('payment')
+    # return redirect('index')
+    return render(request, 'home.html')
 
 @login_required
 # def payment_view(request):
@@ -369,12 +370,30 @@ def home_view(request):
 #     else:
 #         form = PaymentForm()
 #     return render(request, 'payment.html', {'form': form})
+
+# def payment_view(request):
+#     user = request.user
+
+#     if user.has_access:
+#         return render(request, 'payment.html', {'user': user, 'form': None})
+
+#     if request.method == 'POST':
+#         form = PaymentForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             user.payment_screenshot = form.cleaned_data['payment_screenshot']
+#             user.subscription_start = date.today()
+#             user.subscription_duration_days = int(form.cleaned_data['duration'])
+#             user.save()
+#             return render(request, 'thank_you.html')
+#     else:
+#         form = PaymentForm()
+
+#     return render(request, 'payment.html', {'user': user, 'form': form})
+
 def payment_view(request):
     user = request.user
 
-    if user.has_access:
-        return render(request, 'payment.html', {'user': user, 'form': None})
-
+    # First handle the POST request
     if request.method == 'POST':
         form = PaymentForm(request.POST, request.FILES)
         if form.is_valid():
@@ -382,8 +401,9 @@ def payment_view(request):
             user.subscription_start = date.today()
             user.subscription_duration_days = int(form.cleaned_data['duration'])
             user.save()
-            return render(request, 'thank_you.html')
+            return render(request, 'thank_you.html')  
     else:
         form = PaymentForm()
 
-    return render(request, 'payment.html', {'user': user, 'form': form})
+    # For both access/no access: show payment page (GET or failed POST)
+    return render(request, 'payment.html', {'user': user, 'form': form if not user.has_access else None})

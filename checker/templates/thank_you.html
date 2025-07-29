@@ -1,15 +1,10 @@
 {% extends 'base.html' %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Thank You</title>
-    <style>
-        .button-container {
-            text-align: center;
-            margin-top: 30px;
-        }
+{% block content %}
+    <h1 style="text-align: center;">Thank you! 🎉</h1>
+    <p style="text-align: center;">Your payment screenshot has been submitted.</p>
 
-        .button {
+    <div class="button-container" style="text-align: center; margin-top: 30px;">
+        <a href="{% url 'home' %}" class="button" style="
             padding: 10px 20px;
             font-size: 16px;
             margin: 10px;
@@ -17,30 +12,20 @@
             color: white;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
             text-decoration: none;
-        }
+            display: inline-block;
+        ">Go to Home</a>
 
-        .button:hover {
-            background-color: #45a049;
-        }
-
-        .back-button {
+        <a href="{% url 'payment' %}" class="button back-button" style="
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
             background-color: #f44336;
-        }
-
-        .back-button:hover {
-            background-color: #d73833;
-        }
-    </style>
-</head>
-<body>
-    <h1 style="text-align: center;">Thank you! 🎉</h1>
-    <p style="text-align: center;">Your payment screenshot has been submitted.</p>
-
-    <div class="button-container">
-        <a href="{% url 'index' %}" class="button">Go to Home</a>
-        <a href="{% url 'payment' %}" class="button back-button">Back to Payment</a>
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+        ">Back to Payment</a>
     </div>
-</body>
-</html>
+{% endblock %}
